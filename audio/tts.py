@@ -13,8 +13,9 @@ async def play_text(text: str):
     
     text = re.sub(r'[^a-zA-Z0-9áéíóúâêîôûãõçÁÉÍÓÚÂÊÎÔÛÃÕÇ .,;:!?\'"-]', '', text)
     
-    if "</think>" in text:
-        text = text.split("</think>", 1)[1]
+    text.split("</think>")
+    
+    text = text[1]
     
     communicate = edge_tts.Communicate(text, VOICE)
 
