@@ -11,7 +11,8 @@ pygame.mixer.music.set_volume(0.5)
 AGENT_NAME = "ok"
 IS_RUNNING = False
 END_WORD = "finalizo"
-FULL_TEXT = "Em até 300 palavras resposta a pergunta ou afirmação do usuário, de modo direto e descontraído, sem formalidades. Se a resposta for uma pergunta, responda com uma afirmação direta. Se a resposta for uma afirmação, responda com uma pergunta direta. Sempre use o nome do usuário no início da resposta, usuario joão, e resposda em portugues brasileiro. Se o usuário disser 'cancelar', pare de falar e aguarde a próxima entrada de voz."
+USUARIO = "joão"
+FULL_TEXT = "Em até 300 palavras resposta a pergunta ou afirmação do usuário, de modo direto e descontraído, sem formalidades. Se a resposta for uma pergunta, responda com uma afirmação direta. Se a resposta for uma afirmação, responda com uma pergunta direta. Sempre use o nome do usuário no início da resposta, usuario joão"
 
 deletar_todos_os_arquivos()
 
@@ -29,7 +30,7 @@ def run_bot():
         
         if "cancelar" in palavras and not AGENT_NAME in palavras:
             pygame.mixer.music.stop()
-            asyncio.run(play_text("Ok, cancelando."))
+            asyncio.run(play_text("Cancelado"))
             continue
         
         if(not IS_RUNNING):

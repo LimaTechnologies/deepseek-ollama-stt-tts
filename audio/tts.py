@@ -11,12 +11,11 @@ async def play_text(text: str):
     print("Preparando o áudio para rodar...")
     output_file = f"audios/{uuid.uuid4().hex}.mp3"
     
+    text = re.sub(r'^.*?</think>', '', text, flags=re.DOTALL)
+    
     text = re.sub(r'[^a-zA-Z0-9áéíóúâêîôûãõçÁÉÍÓÚÂÊÎÔÛÃÕÇ .,;:!?\'"-]', '', text)
-    
-    text.split("</think>")
-    
-    text = text[1]
-    
+    # Pega apenas o texto após a primeira ocorrência de "</think>"
+    # Extrai apenas o texto após a primeira ocorrência de "</think>", se existir
     communicate = edge_tts.Communicate(text, VOICE)
 
     while pygame.mixer.music.get_busy():
