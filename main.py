@@ -15,6 +15,11 @@ USUARIO = "joão"
 BASE_TEXT = "Em até 300 palavras resposta a pergunta ou afirmação do usuário, de modo direto e descontraído, sem formalidades. Se a resposta for uma pergunta, responda com uma afirmação direta. Se a resposta for uma afirmação, responda com uma pergunta direta. Sempre use o nome do usuário no início da resposta, usuario joão"
 FULL_TEXT = BASE_TEXT + " "
 
+def reset_bot():
+    global FULL_TEXT, IS_RUNNING
+    FULL_TEXT = BASE_TEXT + " "
+    IS_RUNNING = False
+
 deletar_todos_os_arquivos()
 
 def run_bot():
@@ -50,11 +55,9 @@ def run_bot():
             SPLITTED_TEXT.remove(END_WORD)
            
             prompt = " ".join(SPLITTED_TEXT)
-            
-            IS_RUNNING = False
-            SPLITTED_TEXT = ""
-            FULL_TEXT = BASE_TEXT + " "
-
+    
+            reset_bot()        
+    
             if prompt:
                 asyncio.run(play_text("Gerando resposta..."))
                 resposta = perguntar_ollama(prompt)
