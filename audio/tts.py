@@ -13,7 +13,7 @@ async def play_text(text: str):
     
     text = re.sub(r'^.*?</think>', '', text, flags=re.DOTALL)
     
-    text = re.sub(r'[^a-zA-Z0-9áéíóúâêîôûãõçÁÉÍÓÚÂÊÎÔÛÃÕÇ .,;:!?\'"-]', '', text)
+    # text = re.sub(r'[^a-zA-Z0-9áéíóúâêîôûãõçÁÉÍÓÚÂÊÎÔÛÃÕÇ .,;:!?\'"-]', '', text)
     # Pega apenas o texto após a primeira ocorrência de "</think>"
     # Extrai apenas o texto após a primeira ocorrência de "</think>", se existir
     communicate = edge_tts.Communicate(text, VOICE)

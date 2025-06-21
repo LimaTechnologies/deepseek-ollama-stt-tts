@@ -12,12 +12,11 @@ AGENT_NAME = "ok"
 IS_RUNNING = False
 END_WORD = "finalizo"
 USUARIO = "joão"
-BASE_TEXT = "Em até 300 palavras resposta a pergunta ou afirmação do usuário, de modo direto e descontraído, sem formalidades, responda simples sem muitos rodeios. a pergunta ou comentario do usuario é: "
-FULL_TEXT = BASE_TEXT + " "
+FULL_TEXT = ""
 
 def reset_bot():
     global FULL_TEXT, IS_RUNNING
-    FULL_TEXT = BASE_TEXT + " "
+    FULL_TEXT =""
     IS_RUNNING = False
 
 deletar_todos_os_arquivos()
@@ -37,6 +36,7 @@ def run_bot():
         if "cancelar" in palavras and not AGENT_NAME in palavras:
             pygame.mixer.music.stop()
             asyncio.run(play_text("Cancelado"))
+            reset_bot()
             continue
         
         if(not IS_RUNNING):
